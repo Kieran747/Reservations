@@ -23,9 +23,6 @@ Route::get('/employees', function () {
     return view('employees');
 });
 
-Route::get('/','Controller@getDate');
-Route::post('/insert','Controller@insert');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
