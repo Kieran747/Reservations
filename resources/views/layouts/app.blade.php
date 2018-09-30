@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
 
@@ -29,8 +30,8 @@
                 <a class="navbar-brand" href="{{ url('/home') }}" style="font-size: 20px">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <a class="navbar-brand" href="{{ url('/employees') }}" style="color: grey; font-size: 15px";>
-                    Employees
+                <a class="navbar-brand" href="{{ url('/booking') }}" style="color: grey; font-size: 15px";>
+                    Add booking
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -48,11 +49,6 @@
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                @if (Route::has('register'))
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                @endif
                             </li>
                         @else
                             <li class="nav-item dropdown">
@@ -83,5 +79,4 @@
             @yield('content')
         </main>
     </div>
-</body>
-</html>
+

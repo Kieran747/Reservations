@@ -26,3 +26,4 @@ Route::get('/employees', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
