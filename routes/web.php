@@ -12,15 +12,28 @@
 */
 
 Route::get('/', function () {
+
     return view('home');
+
 });
 
 Route::get('/booking', function () {
-    return view('booking');
+
+    $bookings = DB::table('bookings')->get();
+
+    return view('booking', compact('bookings'));
+
 });
 
 Route::get('/employees', function () {
-    return view('employees');
+
+    $employees = DB::table('users')->get();
+
+    return view('employees', compact('employees'));
+});
+
+Route::get('/add', function () {
+    return view('add');
 });
 
 Auth::routes();
