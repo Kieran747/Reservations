@@ -17,11 +17,22 @@ Route::get('/', function () {
 
 });
 
-Route::get('/booking', function () {
+Route::get('bookings/create', function () {
 
-    $bookings = DB::table('bookings')->get();
+    return view('bookings.create');
 
-    return view('booking', compact('bookings'));
+});
+
+Route::get('bookings/list', function () {
+
+    return view('bookings.list');
+
+});
+
+Route::get('/bookings', function () {
+
+
+    return view('bookings');
 
 });
 
@@ -39,4 +50,8 @@ Route::get('/add', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+Route::post('/booking', 'BookingController@store');
 
