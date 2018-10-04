@@ -55,3 +55,28 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/booking', 'BookingController@store');
 
+Route::get('/bookings/list', function () {
+
+    $bookings = DB::table('bookings')->get();
+
+    return view('bookings.list', compact('bookings'));
+});
+
+Route::get('/bookings/{id}', function ($id) {
+
+    $booking = DB::table('bookings')->find($id);
+
+    return view('bookings', compact('booking'));
+});
+
+Route::get('/bookings/edit/{id}', function ($id) {
+
+    $booking = DB::table('bookings')->find($id);
+
+    return view('bookings.edit', compact('booking'));
+});
+
+
+Route::get('bookings/delete', 'BookingController@delete');
+
+Route::post('/booking/edit{id}', 'bookingController@update');

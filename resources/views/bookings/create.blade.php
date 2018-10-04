@@ -12,10 +12,20 @@
 
                 <label for="type">Select a reservation type:</label> <br>
                 <select name="type" style="width: 400px; height: 40px;">
-                    <option value="1">Small Tent</option>
-                    <option value="2">Big Tent</option>
-                    <option value="3">Caravan</option>
+                    <option value="Small Tent">Small Tent</option>
+                    <option value="Big Tent">Big Tent</option>
+                    <option value="Caravan">Caravan</option>
                 </select> <br>
+
+                <lable for="number_of_people">Number of people</lable> <br>
+                <select name="number_of_people">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
 
                 <p>Check in date:</p>
                 <input type="date" class="datepicker" name="check_in" style="width: 400px; height: 40px; border: 1px;"> <br>
