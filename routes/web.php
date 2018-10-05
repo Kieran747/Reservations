@@ -79,4 +79,4 @@ Route::get('/bookings/edit/{id}', function ($id) {
 
 Route::get('bookings/delete', 'BookingController@delete');
 
-Route::post('/booking/edit{id}', 'bookingController@update');
+Route::post('/update', 'bookingController@updateData');

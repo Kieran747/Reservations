@@ -20,8 +20,8 @@
                     <td>{{ $booking->check_out }}</td>
                     <td>{{ $booking->type }}</td>
                    <td><a href="/bookings/{{ $booking->id }}"> <button style="" class="btn btn-primary">More info</button></a></td>
-                    <td><form action="delete" method="POST"><button class="btn btn-primary" style="background-color: red; border-color: red;">Delete</button></form></td>
-                    <td><a href="/edit/{{ $booking->id }}"><button class="btn btn-primary" style="background-color: forestgreen; border-color: forestgreen;">Edit</button></a></td>
+                    <td><button class="btn btn-primary" style="background-color: red; border-color: red;">Delete</button></td>
+                    <td><a href="/bookings/edit/{{ $booking->id }}"><button class="btn btn-primary" style="background-color: forestgreen; border-color: forestgreen;">Edit</button></a></td>
                 </tr>
                 @endforeach
             </table>
