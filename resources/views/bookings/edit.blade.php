@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="booking-individual">
-        <form action="/update" method="POST">
+        <form action="{{ route('booking/update', ['id' => $booking->id]) }}" method="POST">
             {{ csrf_field() }}
         <p style="font-size: 30px">Customer Name:</p> <input type="text" name="name" value="{{ $booking->name }}"> <br>
 
@@ -16,7 +16,7 @@
         </select>
         <p style="font-size: 30px">Check-in Date</p> <input type="date" name="check_in" value="{{ $booking->check_in }}">
         <p style="font-size: 30px">Check-out Date</p> <input type="date" name="check_out" value="{{ $booking->check_out }}"> <br>
-       <button class="btn btn-primary" style="background-color: forestgreen; border-color: forestgreen;" name="submit" value="submit">Submit</button></a> <br>
+       <button class="btn btn-primary" style="background-color: forestgreen; border-color: forestgreen;" name="submit" value="submit">Submit</button> <br>
         </form>
     </div>
 

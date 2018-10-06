@@ -27,7 +27,7 @@ Route::get('bookings/list', function () {
 
     return view('bookings.list');
 
-});
+})->name('list');
 
 Route::get('/bookings', function () {
 
@@ -36,12 +36,11 @@ Route::get('/bookings', function () {
 
 });
 
-Route::get('/employees', function () {
-
-    $employees = DB::table('users')->get();
-
-    return view('employees', compact('employees'));
-});
+Route::get('/delete-post/{id}', [
+    'uses' => 'BookingController@getDeleteBooking',
+    'as' => 'booking.delete',
+    'middleware' => 'auth'
+]);
 
 Route::get('/add', function () {
     return view('add');
@@ -77,6 +76,4 @@ Route::get('/bookings/edit/{id}', function ($id) {
 });
 
 
-Route::get('bookings/delete', 'BookingController@delete');
 
-Route::post('/update', 'bookingController@updateData');
