@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.header')
 
 @section('content')
 
@@ -6,6 +6,8 @@
         <form action="{{ route('booking/update', ['id' => $booking->id]) }}" method="POST">
             {{ csrf_field() }}
         <p style="font-size: 30px">Customer Name:</p> <input type="text" name="name" value="{{ $booking->name }}"> <br>
+            <p style="font-size: 30px">Email</p> <input type="text" name="email" value="{{ $booking->email }}"> <br>
+            <p style="font-size: 30px">Customer Phone number:</p> <input type="text" name="phone_number" value="{{ $booking->phone_number }}"> <br>
 
         <label for="type">Select a reservation type:</label> <br>
         <select name="type" style="width: 400px; height: 40px;">

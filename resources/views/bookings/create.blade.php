@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.header')
 
 @section('content')
 
@@ -9,6 +9,9 @@
             <form action="/booking" method="POST">
                 {{ csrf_field() }}
                 <input type="text" name="name" placeholder="Customer name" style="width: 400px; height: 40px; text-align: center;"> <br>
+                <p>Contact details:</p>
+                <input type="text" name="email" placeholder="Customer email" style="width: 400px; height: 40px; text-align: center;"> <br> <br>
+                <input type="text" name="phone_number" placeholder="Customer phone number" style="width: 400px; height: 40px; text-align: center;"> <br>
 
                 <label for="type">Select a reservation type:</label> <br>
                 <select name="type" style="width: 400px; height: 40px;">
