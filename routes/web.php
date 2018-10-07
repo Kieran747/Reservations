@@ -53,12 +53,36 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::post('/booking', 'BookingController@store');
+Route::post('/checked_in/{link}', 'BookingController@update');
+
+Route::post('/amenities', 'amenitiesController@store');
 
 Route::get('/bookings/list', function () {
 
     $bookings = DB::table('bookings')->get();
 
     return view('bookings.list', compact('bookings'));
+});
+
+Route::get('/bookings/today/checkins', function () {
+
+    $bookingsToday = DB::table('bookings')->where('check_in', Date('Y-m-d'))->get();
+
+    return view('bookings.today.checkins', compact('bookingsToday'));
+});
+
+Route::get('/bookings/today/checkouts', function () {
+
+    $bookingsToday = DB::table('bookings')->where('check_out', Date('Y-m-d'))->get();
+
+    return view('bookings.today.checkouts', compact('bookingsToday'));
+});
+
+Route::get('/bookings/checkin/{id}', function ($id) {
+
+    $booking = DB::table('bookings')->find($id);
+
+    return view('bookings.checkin', compact('booking'));
 });
 
 Route::get('/bookings/{id}', function ($id) {
@@ -74,6 +98,5 @@ Route::get('/bookings/edit/{id}', function ($id) {
 
     return view('bookings.edit', compact('booking'));
 });
-
 
 

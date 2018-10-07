@@ -26,7 +26,7 @@
                     <td>{{ $booking->phone_number }}</td>
                     <td>{{ $booking->check_in }}</td>
                     <td>{{ $booking->check_out }}</td>
-                   <td><a href="/bookings/{{ $booking->id }}"> <button style="" class="btn btn-primary">More info</button></a></td>
+                   <td><a href="/bookings/{{ $booking->id }}"> <button style="" class="btn btn-primary">More Details</button></a></td>
                     <td>
                         <a class="btn btn-primary" style="background-color: red; border-color: red" href="{{ route('booking.delete', ['id' => $booking->id]) }}">Delete</a>
                         </form>

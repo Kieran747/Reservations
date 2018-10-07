@@ -3,3 +3,7 @@ header {
     width: 100%;
     background-color: #24292e;
 }
+
+#nav-cit:hover {
+    color: grey;
+}

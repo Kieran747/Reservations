@@ -25,6 +25,8 @@ class BookingController extends Controller
         $booking->number_of_people = request('number_of_people');
         $booking->email = request('email');
         $booking->phone_number = request('phone_number');
+        $booking->checked_in = request('checked_in ');
+        $booking->checked_out = request('check_out');
 
         $booking->save();
 
@@ -38,18 +40,16 @@ class BookingController extends Controller
         return redirect('/bookings/list')->with(['message' => 'deleted!']);
     }
 
-    public function update($id)
+    public function update($link)
     {
-        $booking = Booking::where('id', $id)->first();
-        $booking->name = request('name');
-        $booking->type = request('type');
-        $booking->check_in = request('check_in');
-        $booking->check_out = request('check_out');
-        $booking->number_of_people = request('number_of_people');
+        $checked_in = '1';
 
-        $booking->update();
+        $booking = Booking::where('id', $link)->first();
+        $booking->$checked_in = request('checked_in');
+
 
         return redirect('/home');
+
     }
 
 }

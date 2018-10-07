@@ -18,6 +18,7 @@
     <a class="navbar-brand" href="{{ url('/home') }}" style="font-size: 25px; color: white; position: absolute; top: 10px; left: 100px">
         {{ config('app.name', 'Laravel') }}
     </a>
+
     <ul class="navbar-nav ml-auto" style="float: right">
         <!-- Authentication Links -->
         @guest
@@ -25,7 +26,7 @@
                 <a style="color: white; position: absolute; right: 150px; top: 15px" class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
             </li>
         @else
-            <li class="nav-item dropdown" style="position: absolute; top: 15px; right: 420px; color: white">
+            <li class="nav-item dropdown" style="position: absolute; top: 15px; right: 465px; font-size: 15px">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color: white">
                     <img src="http://images.kieranfs.co.uk/plus.png" style="width: 25px"> <span class="caret"></span>
                 </a>
@@ -33,10 +34,6 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ url('/bookings/create') }}">
                         {{ __('Add booking') }}
-                    </a>
-
-                    <a class="dropdown-item" href="{{ url('bookings/list') }}">
-                        {{ __('Booking list') }}
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -63,12 +60,37 @@
                         @csrf
                     </form>
 
+            <li class="nav-item dropdown" style="position: absolute; top: 15px; right: 410px; color: white" >
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color: white" >
+                    <img src="http://images.kieranfs.co.uk/dots.png" style="width: 15px"> <span class="caret"></span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/bookings/today/checkins">
+                        {{ __('Todays Check-ins') }}
+                    </a>
+
+                    <a class="dropdown-item" href="/bookings/today/checkouts">
+                        {{ __('Todays Check-outs') }}
+                    </a>
+
+                    <a class="dropdown-item" href="{{ url('bookings/list') }}">
+                        {{ __('Booking list') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
 
 
                 </div>
             </li>
     @endguest
 </header>
-<main class="py-4">
-    @yield('content')
-</main>
+@guest
+    <p style="font-size: 25px; text-align: center">Please Login as an employee <a href="{{ route('login') }}" class="btn btn-primary">Login</a></p>
+@else
+    <main class="py-4">
+        @yield('content')
+    </main>
+@endguest

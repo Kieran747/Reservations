@@ -34,6 +34,8 @@
                 <input type="date" class="datepicker" name="check_in" style="width: 400px; height: 40px; border: 1px;"> <br>
                 <p>Check out date:</p>
                 <input type="date" class="datepicker" name="check_out" style="width: 400px; height: 40px; border: 1px;"> <br>
+                <input type="hidden" name="checked_in" value="0">
+                <input type="hidden" name="checked_out" value="0">
                 <button type="submit" name="submit" style="height: 40px; width: 100px; " class="btn btn-primary" value="submit">Submit</button>
             </form>
 
