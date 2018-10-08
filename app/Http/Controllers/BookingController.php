@@ -25,8 +25,8 @@ class BookingController extends Controller
         $booking->number_of_people = request('number_of_people');
         $booking->email = request('email');
         $booking->phone_number = request('phone_number');
-        $booking->checked_in = request('checked_in ');
-        $booking->checked_out = request('check_out');
+        $booking->checked_in = request('checked_in');
+        $booking->checked_out = request('checked_out');
 
         $booking->save();
 

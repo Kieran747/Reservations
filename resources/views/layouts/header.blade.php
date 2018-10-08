@@ -74,6 +74,11 @@
                         {{ __('Todays Check-outs') }}
                     </a>
 
+                    <a class="dropdown-item" href="/bookings/checked-in">
+                        {{ __('Checked-in') }}
+                    </a>
+
+
                     <a class="dropdown-item" href="{{ url('bookings/list') }}">
                         {{ __('Booking list') }}
                     </a>

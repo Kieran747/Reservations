@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Booking;
 
 use Illuminate\Http\Request;
 
@@ -24,8 +25,16 @@ class AmenitiesController extends Controller
         $amenities->days_stayed = request('days');
         $amenities->link = request('link');
 
+
         $amenities->save();
 
-        return redirect('home');
+
+        $booking = Booking::where('id', $amenities->link)->first();
+
+        $booking->checked_in = 1;
+
+        $booking->save();
+
+        return redirect('/home');
     }
 }

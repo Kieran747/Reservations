@@ -52,10 +52,20 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
+
 Route::post('/booking', 'BookingController@store');
 Route::post('/checked_in/{link}', 'BookingController@update');
 
+
 Route::post('/amenities', 'amenitiesController@store');
+
+Route::get('/bookings/checkout/{id}', function ($id) {
+
+    $booking = DB::table('bookings')->find($id);
+    $amenities = DB::table('amenities')->where('link', '=', $id)->first();
+
+    return view('bookings.checkout', compact('booking','amenities'));
+});
 
 Route::get('/bookings/list', function () {
 
@@ -64,9 +74,20 @@ Route::get('/bookings/list', function () {
     return view('bookings.list', compact('bookings'));
 });
 
+Route::get('/bookings/checked-in', function () {
+
+    $bookings = DB::table('bookings')->where('checked_in', '=', '1')
+        ->where('checked_out', '=', '0')->get();
+
+    return view('bookings.checked-in', compact('bookings'));
+});
+
+
+
 Route::get('/bookings/today/checkins', function () {
 
-    $bookingsToday = DB::table('bookings')->where('check_in', Date('Y-m-d'))->get();
+    $bookingsToday = DB::table('bookings')->where('check_in', Date('Y-m-d'))
+        ->where('checked_in','=','0')->get();
 
     return view('bookings.today.checkins', compact('bookingsToday'));
 });

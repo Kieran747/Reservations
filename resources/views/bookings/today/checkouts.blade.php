@@ -28,12 +28,11 @@
                         <td>{{ $bookingToday->phone_number }}</td>
                         <td>{{ $bookingToday->check_in }}</td>
                         <td>{{ $bookingToday->check_out }}</td>
-                        <td><a href="/bookings/{{ $bookingToday->id }}"> <button style="" class="btn btn-primary">Check-out</button></a></td>
                         <td>
                             <a class="btn btn-primary" style="background-color: red; border-color: red" href="{{ route('booking.delete', ['id' => $bookingToday->id]) }}">Delete</a>
                             </form>
                         </td>
-                        <td><a  href="/bookings/edit/{{ $bookingToday->id }}"><button class="btn btn-primary" style="background-color: forestgreen; border-color: forestgreen;">Edit</button></a></td>
+                        <td><a  href="/bookings/checkout/{{ $bookingToday->id }}"><button class="btn btn-primary" style="background-color: forestgreen; border-color: forestgreen;">Checkout</button></a></td>
                     </tr>
                 @endforeach
             </table>
