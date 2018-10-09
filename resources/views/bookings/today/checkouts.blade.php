@@ -6,7 +6,7 @@
     ?>
     <center>
         <div class="booking-today">
-            <p style="font-size: 20px">List of Check-outs Today </p> <p style="font-size: 20px; color: #3490dc;">{{ $date }}</p>
+            <p style="font-size: 20px">Check-outs Today </p> <p style="font-size: 20px; color: #3490dc;">{{ $date }}</p>
             <table  style="width:75%">
                 @foreach ($bookingsToday as $bookingToday)
                     <tr>

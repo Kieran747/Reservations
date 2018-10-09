@@ -27,7 +27,7 @@
             ?> {{ $ElecYesOrNo }}</p>
 
         <p>Shower: <?php $Shower = $amenities->Shower ?> <?php
-            if ($Shower > '1') {
+            if ($Shower == '1') {
                 $ShowerYesOrNo = 'yes';
             } else {
                 $ShowerYesOrNo = 'No';
@@ -91,11 +91,12 @@
 
         ?>
 
-        <p>Total Cost: {{ $cost }} </p>
+        <p>Total Cost: £{{ $cost }} </p>
 
-        <form>
-            <input type="hidden">
-            <button class="btn btn-primary">Finish</button>
+        <form method="POST" action="/checkout/{{ $booking->id }}">
+            {{ csrf_field() }}
+            <input type="hidden" name="bill" value="{{ $cost }}">
+            <button class="btn btn-primary" name="submit">Finish</button>
         </form>
 
     </center>

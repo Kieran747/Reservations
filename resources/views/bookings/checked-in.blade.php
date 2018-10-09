@@ -4,7 +4,7 @@
 
     <center>
         <div class="booking-list">
-            <p style="font-size: 20px">List of Bookings</p>
+            <p style="font-size: 20px">List of bookings currently checked in</p>
             <table  style="width:75%">
                 @foreach ($bookings as $booking)
                     <tr>

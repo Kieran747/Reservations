@@ -32,9 +32,10 @@ class AmenitiesController extends Controller
         $booking = Booking::where('id', $amenities->link)->first();
 
         $booking->checked_in = 1;
+        $booking->number_of_people = request('people');
 
         $booking->save();
 
-        return redirect('/home');
+        return redirect('/bookings/today/checkins');
     }
 }
