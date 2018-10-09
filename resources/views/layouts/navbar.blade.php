@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.OLDapp')
 
     <div class="flex-center position-ref full-height">
         @if (Route::has('login'))

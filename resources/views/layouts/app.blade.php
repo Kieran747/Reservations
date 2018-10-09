@@ -1,103 +1,101 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
-    <!-- Styles -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    <title>{{ config('app.name', 'Laravel') }}</title>
 </head>
 <body>
 
+<header>
 
+    <a class="navbar-brand" href="{{ url('/home') }}" style="font-size: 25px; color: white; position: absolute; top: 10px; left: 100px">
+        {{ config('app.name', 'Laravel') }}
+    </a>
 
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/home') }}" style="font-size: 20px">
-                    {{ config('app.name', 'Laravel') }}
+    <ul class="navbar-nav ml-auto" style="float: right">
+        <!-- Authentication Links -->
+        @guest
+            <li class="nav-item">
+                <a style="color: white; position: absolute; right: 150px; top: 15px" class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+            </li>
+        @else
+            <li class="nav-item dropdown" style="position: absolute; top: 15px; right: 465px; font-size: 15px">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color: white">
+                    <img src="http://images.kieranfs.co.uk/plus.png" style="width: 25px"> <span class="caret"></span>
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ url('/bookings/create') }}">
+                        {{ __('Add booking') }}
+                    </a>
 
-                    </ul>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <img src="http://kieranfs.co.uk/plus.png" style="width: 25px"> <span class="caret"></span>
-                                </a>
+            <li class="nav-item dropdown" style="position: absolute; top: 15px; right: 250px; font-size: 15px">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color: white" >
+                    {{ Auth::user()->name }} <span class="caret"></span>
+                </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ url('/bookings/create') }}">
-                                        {{ __('Add booking') }}
-                                    </a>
-
-                                    <a class="dropdown-item" href="{{ url('bookings/list') }}">
-                                        {{ __('Booking list') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                        {{ __('Logout') }}
+                    </a>
 
-                                    <a class="dropdown-item" href="">
-                                        {{ __('admin') }}
-                                    </a>
+                    <a class="dropdown-item" href="">
+                        {{ __('admin') }}
+                    </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+
+            <li class="nav-item dropdown" style="position: absolute; top: 15px; right: 410px; color: white" >
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color: white" >
+                    <img src="http://images.kieranfs.co.uk/dots.png" style="width: 15px"> <span class="caret"></span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/bookings/today/checkins">
+                        {{ __('Todays Check-ins') }}
+                    </a>
+
+                    <a class="dropdown-item" href="/bookings/today/checkouts">
+                        {{ __('Todays Check-outs') }}
+                    </a>
+
+                    <a class="dropdown-item" href="/bookings/checked-in">
+                        {{ __('Checked-in') }}
+                    </a>
 
 
+                    <a class="dropdown-item" href="{{ url('bookings/list') }}">
+                        {{ __('Booking list') }}
+                    </a>
 
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+
+
                 </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
-
+            </li>
+    @endguest
+</header>
+@guest
+    <p style="font-size: 25px; text-align: center">Please Login as an employee <a href="{{ route('login') }}" class="btn btn-primary">Login</a></p>
+@else
+    <main class="py-4">
+        @yield('content')
+    </main>
+@endguest
